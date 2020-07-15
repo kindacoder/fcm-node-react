@@ -4,7 +4,9 @@ var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var FcmMessage = require('./models/fcmMessage');
 
-const { messaging } = require('./firebase/firebaseInit');
+// const { messaging } = require('./firebase/firebaseInit');
+
+
 
 
 var logger = require('morgan');
