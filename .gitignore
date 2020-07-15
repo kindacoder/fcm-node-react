@@ -1,2 +1,3 @@
 server/node_modules
 client/node_modules
+server/firebase/firebase-admin-creds.json

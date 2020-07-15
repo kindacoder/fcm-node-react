@@ -4,6 +4,9 @@ var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var FcmMessage = require('./models/fcmMessage');
 
+const { messaging } = require('./firebase/firebaseInit');
+
+
 var logger = require('morgan');
 var PORT = 5500;
 
@@ -25,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/fcm-messages', fcmMessage);
+
+
 
 app.listen(PORT, (req, res) => {
     console.log('server started at port 5500');
