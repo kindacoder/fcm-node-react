@@ -5,7 +5,16 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send('this is the default and get route to fcm-messages');
+  const messages = FcmMessage.find().then(resp => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    res.status(200).send(resp);
+  }).catch(err => {
+    throw err;
+  })
+
+
 });
 
 const { sendNotificationToClient } = require('../fcm/notify')
@@ -30,9 +39,9 @@ router.post('/', function (req, res) {
       console.log(err);
     }
     //send fcm notification
-    const tokens = [];
-    const notificationData = newFcmMessage;
-    sendNotificationToClient(tokens, notificationData);
+    // const tokens = [];
+    // const notificationData = newFcmMessage;
+    // sendNotificationToClient(tokens, notificationData);
     res.status(200).send({ message: 'message saved successfully !' });
   });
 
