@@ -35,7 +35,6 @@ const Messaging = () => {
                     axios
                         .post("/fcm-messages", values)
                         .then((resp) => {
-                            console.log(resp)
 
                             setMessages(messages.concat(resp.data));
                             actions.setSubmitting(false);
