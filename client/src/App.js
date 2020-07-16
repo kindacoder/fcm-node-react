@@ -27,7 +27,7 @@ function App() {
     <Fragment>
       <ToastContainer autoClose={2000} position="top-center" />
       <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="#home">Firebase notifictations with React and Express</Navbar.Brand>
+        <Navbar.Brand className="center-column" href="">FCM with React and Node</Navbar.Brand>
       </Navbar>
       <Container className="center-column">
         <Row>

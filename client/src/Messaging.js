@@ -7,6 +7,8 @@ import FormControl from "react-bootstrap/FormControl";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import { toast } from "react-toastify";
+import { onMessageListener } from './firebase/firebaseInit';
+
 
 const Messaging = () => {
     const [messages, setMessages] = React.useState([]);
@@ -18,7 +20,22 @@ const Messaging = () => {
             setMessages(resp.data);
             setRequesting(false);
         });
-    }, []);
+
+
+
+
+    },
+
+        []);
+    onMessageListener()
+        .then((payload) => {
+            const { name, message } = payload.data;
+            toast.info(`${name}; ${message}`);
+        })
+        .catch((err) => {
+            toast.error(JSON.stringify(err));
+        });
+
 
     return (
         <Container>

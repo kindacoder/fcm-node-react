@@ -40,9 +40,11 @@ router.post('/', function (req, res) {
       console.log(err);
     }
     //send fcm notification
-    // const tokens = [];
-    // const notificationData = newFcmMessage;
-    // sendNotificationToClient(tokens, notificationData);
+    const tokens = [
+      'dmAcWg2Bfd2p1bBmyKNTmV:APA91bEzOoeeNTzyZFF_69TQy3ehzs6HpA7bzRElNHcM7nW_hcHCkxYGIa4nY8wDMo5bbugceagMPjhPY06S9XXu72qrBeIhE2IVkITQ-tooVES4mg7aD9mJNW5MDQVSyH3Qp3bSAI7D'
+    ];
+    const notificationData = newFcmMessage;
+    sendNotificationToClient(tokens, notificationData);
     res.status(200).send({ ...newFcmMessage });
   });
 
