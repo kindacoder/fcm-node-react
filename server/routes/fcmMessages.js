@@ -5,9 +5,10 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
   const messages = FcmMessage.find().then(resp => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
     res.status(200).send(resp);
   }).catch(err => {
@@ -42,7 +43,7 @@ router.post('/', function (req, res) {
     // const tokens = [];
     // const notificationData = newFcmMessage;
     // sendNotificationToClient(tokens, notificationData);
-    res.status(200).send({ message: 'message saved successfully !' });
+    res.status(200).send({ ...newFcmMessage });
   });
 
 
