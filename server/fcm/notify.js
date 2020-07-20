@@ -4,8 +4,9 @@ module.exports = {
     sendNotificationToClient: (tokens, data) => {
         // Send a message to the devices corresponding to the provided
         // registration tokens.
+
         messaging
-            .sendMulticast({ tokens, data })
+            .sendMulticast({ tokens, data, notification: { body: data.name, title: data.message } })
             .then(response => {
                 // Response is an object of the form { responses: [] }
                 const successes = response.responses.filter(r => r.success === true)

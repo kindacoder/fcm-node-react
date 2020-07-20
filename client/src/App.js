@@ -18,6 +18,24 @@ function App() {
   requestFirebaseNotificationPermission()
     .then((firebaseToken) => {
       // eslint-disable-next-line no-console
+      axios
+        .post("/fcm-tokens", { token: firebaseToken })
+        .then((resp) => {
+
+          if (resp.code == 200) {
+            toast.success("token saved successfully");
+          }
+          else if (resp.code == 422) {
+            toast.error("token already present on db");
+          }
+
+
+        })
+        .catch((err) => {
+          console.log('errrrorororooro', err);
+
+
+        });
       console.log(firebaseToken);
     })
     .catch((err) => {
